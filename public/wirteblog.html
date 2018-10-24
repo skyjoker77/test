@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>写博客</title>
+</head>
+<style>
+    #blogContent{
+        resize: none
+    }
+    /* #content1{border:slategray} */
+</style>
+<body>
+    <div id='app'>
+     <!-- <div>
+        <span>标题：</span>
+        <input v-model='title' type="text">
+    </div>
+    <div>
+        <span>作者：</span>
+        <input v-model='auther' type="text">
+    </div> -->
+    <span style="color: red;">有什么想告诉大家的</span>
+    <div >
+       <textarea v-model='content'name="" id="blogContent" cols="100" rows="25"></textarea>
+    </div>
+    <button v-on:click='submit'>保存</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+    var app =new Vue({
+        el:'#app',
+        data:{
+            content:''
+        },
+        methods:{
+            submit(){
+                // var blogData={content:123};
+                var blogData={
+                    content:this.content
+                };
+                axios.post('http://localhost:2018/article',blogData).then(
+                    function(res){
+                        console.log(res)
+                         if(res.data==='ok'){
+                           
+                             location.href='blog.html';
+                         }else{
+                             alert('错误');
+                         }
+                    }
+                )
+                
+            }
+        }
+    })
+</script>
+</body>
+</html>
