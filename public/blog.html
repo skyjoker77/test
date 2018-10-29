@@ -20,38 +20,46 @@
 
     body,
     html {
-        background-image: url(BM2.jpg);
+        background-image: url(鲸.png);
         background-size: 100%;
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
         background-attachment: fixed;
         position: relative;
-        
+
     }
 
 
     #blogContent {
-        resize: none
+        resize: none;
+        box-shadow: 3px 3px 3px #888888;
+        overflow: auto;
     }
 
     #fst {
         left: 30%;
         position: absolute;
+
     }
 
     #bto {
         right: 0%;
         position: absolute;
     }
-    #dp{
+
+    #dp {
         margin-top: 60px;
-        width:500px;
+        width: 500px;
+        height: 250px;
         background-color: aliceblue;
-        opacity:0.6;
-    };
-  
-   
+        /* opacity: 0.9; */
+        overflow: auto;
+        box-shadow: 8px 8px 8px #888888;
+        border-radius: 12px;
+    }
+
+    ;
 </style>
 
 <body>
@@ -62,11 +70,10 @@
                     <span style="color: rgb(255, 255, 255);">这是一个留言板ε=ε=ε=(~￣▽￣)~</span>
                     <div>
                         <textarea v-model='content' name="" id="blogContent" cols="75" rows="10"></textarea>
-                    </div>
-                    <!-- <button v-on:click='submit'>保存</button> -->
-                    <button id='bto' class='button' type="submit " v-on:click='touch'>发送===>></button>
-                    <div v-for='blogData in blogDatas' class='blog' id='dp'>
-                        <div id='content'>{{blogData.articleContent}}</div>
+                        <button id='bto' class='button' type="submit " v-on:click='touch'>发送===>></button>
+                        <div v-for='blogData in blogDatas' class='blog' id='dp'>
+                            <div id='content'>{{blogData.articleContent}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
